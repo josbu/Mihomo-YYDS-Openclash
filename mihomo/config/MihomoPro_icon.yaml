@@ -1,12 +1,12 @@
-# 项目: MihomoPro 高端订制配置 版本 V2.5
-# 日期：2024年9月28日
+# 项目: MihomoPro 高端订制配置 版本 V2.5.1
+# 日期：2024年9月29日
 # 项目地址: https://github.com/666OS
 # TG频道: https://t.me/Pinched666
 # 官方文档：https://wiki.metacubex.one
 # ❗️注意：在proxy-providers加入您的机场订阅链接（锚点区结束后面）。如有问题请反馈感谢!
 # 配置亮点：
 # 1. 策略组分类：最详细的大分类，同时有丰富的细分应用分组，大分类只为兜底作用，把所有的选择权交给用户。
-# 2. 国家/地区策略：支持根据策略组选择不同国家/地区的代理服务，并提供自动、均衡（散列）和轮询，单选节点等4种切换功能，便于随时切换。
+# 2. 地区策略：支持根据策略组选择不同地区的代理服务，并提供自动、均衡（散列）和轮询，单选节点等4种切换功能，便于随时切换。
 # 3. 常用公司服务分组：常用服务被单独归类以提高使用效率，例如：谷歌服务、微软服务和苹果服务，脸书服务被归为全球服务，建议使用代理访问，公司在中国的服务已内置为直连。
 # 4. mrs 格式规则集：没什么用但爱用。
 # 5. IPv6 支持：适配 IPv6，确保在支持 IPv6 的网络环境中能够正常工作，提高兼容性和访问效率。
@@ -21,14 +21,14 @@
 # 锚点 - 远程订阅组
 PProviders: &PProviders {type: http, interval: 86400, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, filter: '^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))'}
 # 锚点 - 筛选组 
-FilterHK: &FilterHK '(?!)港|🇭🇰|HK|Hong|HKG'
-FilterTW: &FilterTW '(?i)台|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH'
-FilterSG: &FilterSG '(?i)新|🇸🇬|SG|Sing|SIN|XSP'
-FilterJP: &FilterJP '(?i)日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK'
-FilterKR: &FilterKR '(?i)韩|🇰🇷|韓|韩国|韓國|首尔|南朝鲜|KR|KOR|Korea|South'
-FilterUS: &FilterUS '(?i)美|🇺🇸|US|USA|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD'
+FilterHK: &FilterHK '(?!)港|香港|🇭🇰|HK|Hong|HKG'
+FilterTW: &FilterTW '(?i)台|台湾|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH'
+FilterSG: &FilterSG '(?i)新|新加坡|🇸🇬|SG|Sing|SIN|XSP'
+FilterJP: &FilterJP '(?i)日|日本|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK'
+FilterKR: &FilterKR '(?i)韩|韩国|🇰🇷|韓|韓國|首尔|南朝鲜|KR|KOR|Korea|South'
+FilterUS: &FilterUS '(?i)美|美国|🇺🇸|US|USA|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD'
 FilterEU: &FilterEU '(?i)(🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU)'
-FilterOther: &FilterOther '^(?!.*(直连|港|台|新|日|韩|美|🇭🇰|🇼🇸|🇹🇼|🇸🇬|🇯🇵|🇰🇷|🇺🇸|🇬🇧|🇦🇹|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|HK|TW|SG|JP|KR|US|GB|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|HKG|TPE|TSA|KHH|SIN|XSP|NRT|HND|KIX|CTS|FUK|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|LHR|LGW))'
+FilterOther: &FilterOther '^(?!.*(直连|港|台|新|日|韩|香港|台湾|新加坡|日本|韩国|美国|🇭🇰|🇼🇸|🇹🇼|🇸🇬|🇯🇵|🇰🇷|🇺🇸|🇬🇧|🇦🇹|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|HK|TW|SG|JP|KR|US|GB|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|HKG|TPE|TSA|KHH|SIN|XSP|NRT|HND|KIX|CTS|FUK|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|LHR|LGW))'
 FilterAll: &FilterAll '^(?!.*(直连|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))'
 # 锚点 - 策略组
 UrlTest: &UrlTest {type: url-test, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
@@ -342,9 +342,9 @@ proxy-groups:
   - {name: 谷歌服务, <<: *SelectProxy, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png}
   - {name: 苹果服务, <<: *SelectProxy, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple_1.png}
   - {name: 脸书服务, <<: *SelectProxy, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Facebook.png}
-  # 国家/地区策略
+  # 地区策略
   - {name: 香港策略, type: select, proxies: [香港自动, 香港均衡-散列, 香港均衡-轮询], include-all: true, filter: *FilterHK, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png}
-  - {name: 台湾策略, type: select, proxies: [台湾自动, 台湾均衡-散列, 台湾均衡-轮询], include-all: true, filter: *FilterTW, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png}
+  - {name: 台湾策略, type: select, proxies: [台湾自动, 台湾均衡-散列, 台湾均衡-轮询], include-all: true, filter: *FilterTW, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TW.png}
   - {name: 新加坡策略, type: select, proxies: [新加坡自动, 新加坡均衡-散列, 新加坡均衡-轮询], include-all: true, filter: *FilterSG, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png}
   - {name: 日本策略, type: select, proxies: [日本自动, 日本均衡-散列, 日本均衡-轮询], include-all: true, filter: *FilterJP, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png}
   - {name: 韩国策略, type: select, proxies: [韩国自动, 韩国均衡-散列, 韩国均衡-轮询], include-all: true, filter: *FilterKR, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png}
@@ -523,7 +523,6 @@ rules:
   - SRC-PORT,51413,直连
   # Cloudflare
   - DOMAIN-SUFFIX,cloudflare.com,直连
-
   # 拦截规则
   - DOMAIN-SUFFIX,posthog.com,REJECT-DROP
   # 米家请求风暴
@@ -537,7 +536,6 @@ rules:
   # Adobe PJ
   - OR,((DOMAIN,lcs-cops.adobe.io), (DOMAIN,photo.adobe.io)),DIRECT
   - DOMAIN-SUFFIX,adobe.io,REJECT
-
   # 远程域名规则
   - RULE-SET,category-public-tracker,REJECT-DROP # 拒绝公共行为跟踪
   - RULE-SET,private_ip,国内网站,no-resolve
