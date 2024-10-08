@@ -1,6 +1,10 @@
 # 类型：修正直连
 # 作者：666
-# 日期：2024年10月7日
+# 日期：2024年10月8日
+
+# TV
+DOMAIN-SUFFIX,speedtest.cn
+DOMAIN,ottsdk.itv.video
 
 # 公共 NTP 服务
 DOMAIN-SUFFIX,ntp.org
@@ -31,3 +35,9 @@ PROCESS-NAME,NetTransport
 PROCESS-NAME,uTorrent
 PROCESS-NAME,WebTorrent
 
+# 其它
+DOMAIN-SUFFIX,mihomos.us.kg
+DOMAIN-SUFFIX,synology.com
+DOMAIN-SUFFIX,quickconnect.to
+DOMAIN-SUFFIX,cocopilot.org
+PROCESS-NAME,zerotier-one
