@@ -119,6 +119,11 @@ sniffer:
     - '+.qpic.cn'
     - '+.qq.com'
     - '+.wechatapp.com'
+    #  语音通信
+    - '+.vivox.com'
+    # 向日葵服务
+    - '+.oray.com'
+    - '+.sunlogin.net'
     
 # 虚拟网卡模式
 tun:
