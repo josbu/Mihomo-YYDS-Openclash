@@ -506,7 +506,9 @@ IP-CIDR6,2a09:bac0:60::/48,no-resolve
 IP-CIDR6,2a09:bac0:63::/48,no-resolve
 IP-CIDR6,2a09:bac0:64::/46,no-resolve
 IP-CIDR6,2a09:bac0:68::/47,no-resolve
-IP-CIDR6,2a09:bac0:70::/45,no-resolve
+IP-CIDR6,2a09:bac0:70::/46,no-resolve
+IP-CIDR6,2a09:bac0:74::/47,no-resolve
+IP-CIDR6,2a09:bac0:76::/48,no-resolve
 IP-CIDR6,2a09:bac0:78::/47,no-resolve
 IP-CIDR6,2a09:bac0:80::/47,no-resolve
 IP-CIDR6,2a09:bac0:83::/48,no-resolve
