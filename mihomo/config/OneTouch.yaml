@@ -77,6 +77,6 @@ rule-providers:
 rules: 
   - RULE-SET,private_ip,直连,no-resolve
   - RULE-SET,cn_domain,直连
-  - AND,((NOT,((RULE-SET,cn_ip,直连))),(OR,((IP-CIDR,0.0.0.0/0),(IP-CIDR6,::/0)))),一键连
+  - AND,((NOT,((RULE-SET,cn_ip,直连,no-resolve))),(OR,((IP-CIDR,0.0.0.0/0),(IP-CIDR6,::/0)))),一键连
   - MATCH,一键连
   
