@@ -66,6 +66,7 @@ proxy-groups:
   - {name: 日本自动, <<: *UrlTest, filter: *FilterJP, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png}
   - {name: 韩国自动, <<: *UrlTest, filter: *FilterKR, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png}
   - {name: 美国自动, <<: *UrlTest, filter: *FilterUS, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png}
+  - {name: GLOBAL,  <<: *SelectProxy, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png}
 
 rule-providers: 
   category-ai-chat-!cn: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://mirror.ghproxy.com/https://github.com/666OS/YYDS/raw/main/mihomo/rules/category-ai-chat-!cn.mrs}
