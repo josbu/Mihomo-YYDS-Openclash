@@ -1,18 +1,30 @@
-# 项目: OneTouch 一键连 v1.5.1
-# 日期：2024年10月12日
+# >>=====================================<<
+# ||                                     ||
+# ||      ██████╗  ██████╗  ██████╗      ||
+# ||     ██╔════╝ ██╔════╝ ██╔════╝      ||
+# ||     ███████╗ ███████╗ ███████╗      ||
+# ||     ██╔═══██╗██╔═══██╗██╔═══██╗     ||
+# ||     ╚██████╔╝╚██████╔╝╚██████╔╝     ||
+# ||      ╚═════╝  ╚═════╝  ╚═════╝      ||
+# ||                                     ||
+# >>=====================================<<
+# 名称: OneTouch 一键连 v1.6
+# 日期：2024年10月23日
 # 地址: https://github.com/666OS
 # 频道: https://t.me/Pinched666
 
 PProviders: &PProviders {type: http, interval: 86400, health-check: {enable: true, url: 'https://www.gstatic.com/generate_204', interval: 300}, filter: '^(?!.*(群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))'}
 UrlTest: &UrlTest {type: url-test, interval: 60, tolerance: 20, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: true, include-all: true}
-FilterHK: &FilterHK '(?i)港|🇭🇰|HK|Hong|HKG'
-FilterTW: &FilterTW '(?i)台|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH'
-FilterSG: &FilterSG '(?i)新|🇸🇬|SG|Sing|SIN|XSP'
-FilterJP: &FilterJP '(?i)日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK'
-FilterKR: &FilterKR '(?i)韩|🇰🇷|韓|首尔|南朝鲜|KR|KOR|Korea|South'
-FilterUS: &FilterUS '(?i)美|🇺🇸|US|USA|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD'
-SelectOne: &SelectOne     {type: select, proxies: [香港自动, 台湾自动, 新加坡自动, 日本自动, 韩国自动, 美国自动]}
-SelectProxy: &SelectProxy {type: select, proxies: [一键连, 香港自动, 台湾自动, 新加坡自动, 日本自动, 韩国自动, 美国自动]}
+FallBack: &FallBack {type: fallback, interval: 60, lazy: true, url: 'https://www.gstatic.com/generate_204', disable-udp: false, timeout: 2000, max-failed-times: 3, hidden: false}
+FilterHK: &FilterHK '(?i)港|香港|🇭🇰|HK|Hong|HKG'
+FilterTW: &FilterTW '(?i)台|台湾|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH'
+FilterSG: &FilterSG '(?i)坡|新加坡|🇸🇬|SG|Sing|SIN|XSP'
+FilterJP: &FilterJP '(?i)日|日本|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK'
+FilterKR: &FilterKR '(?i)韩|韩国|🇰🇷|韓|韓國|首尔|南朝鲜|KR|KOR|Korea|South'
+FilterUS: &FilterUS '(?i)美|美国|🇺🇸|US|USA|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD'
+SelectFB: &SelectFB {type: select, proxies: [故障转移, 香港自动, 台湾自动, 新加坡自动, 日本自动, 韩国自动, 美国自动, 直连]}
+SelectSG: &SelectSG {type: select, proxies: [新加坡自动, 一键连, 故障转移, 台湾自动, 日本自动, 韩国自动, 美国自动]}
+SelectOne: &SelectOne {type: select, proxies: [一键连, 故障转移, 香港自动, 台湾自动, 新加坡自动, 日本自动, 韩国自动, 美国自动]}
 
 # 填写订阅,名称不能重复
 proxy-providers:
@@ -40,33 +52,36 @@ sniffer:
   override-destination: true
   force-dns-mapping: true
   parse-pure-ip: true
+  
 tun:
   enable: true
   stack: mixed
-  dns-hijack: ['any:53', 'tcp://any:53']
-  auto-route: true
-  auto-redirect: true
-  auto-detect-interface: true
+  dns-hijack: [any:53]
+
 dns:
   enable: true
   ipv6: true
   respect-rules: false
-  fake-ip-filter: ['*', '+.lan', '+.local', '+.market.xiaomi.com', 'rule-set:cn_domain,private_domain']
-  default-nameserver: ['223.5.5.5', '119.29.29.29']
+  fake-ip-filter: ['*', '+.lan', '+.local', 'rule-set:cn_domain,private_domain']
+  default-nameserver: ['119.29.29.29', '180.184.1.1', '223.5.5.5']
   nameserver: ['https://doh.pub/dns-query', 'https://dns.alidns.com/dns-query']
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
 
 proxies:
+  - {name: 直连, type: direct, udp: true, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Direct.png}
 
 proxy-groups:
-  - {name: 一键连,  <<: *SelectOne, include-all: true, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/666OS/YYDS/main/mihomo/image/mihomo.png}
-  - {name: AI平台,  <<: *SelectProxy, include-all: true, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/ChatGPT-green.png}
+  - {name: 一键连,  <<: *SelectFB, include-all: true, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/666OS/YYDS/main/mihomo/image/mihomo.png}
+  - {name: 故障转移, <<: *FallBack, proxies: [香港自动, 台湾自动, 新加坡自动, 日本自动, 韩国自动, 美国自动, 直连], icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/ULB.png}
+  - {name: AI平台,  <<: *SelectSG, include-all: true, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/ChatGPT-green.png}
   - {name: 香港自动, <<: *UrlTest, filter: *FilterHK, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png}
   - {name: 台湾自动, <<: *UrlTest, filter: *FilterTW, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TW.png}
   - {name: 新加坡自动, <<: *UrlTest, filter: *FilterSG, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png}
   - {name: 日本自动, <<: *UrlTest, filter: *FilterJP, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png}
   - {name: 韩国自动, <<: *UrlTest, filter: *FilterKR, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png}
   - {name: 美国自动, <<: *UrlTest, filter: *FilterUS, icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png}
-  - {name: GLOBAL,  <<: *SelectProxy, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png}
+  - {name: GLOBAL,  <<: *SelectOne, icon: https://mirror.ghproxy.com/https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png}
 
 rule-providers: 
   category-ai-chat-!cn: {type: http, interval: 86400, behavior: domain, format: mrs, url: https://mirror.ghproxy.com/https://github.com/666OS/YYDS/raw/main/mihomo/rules/category-ai-chat-!cn.mrs}
