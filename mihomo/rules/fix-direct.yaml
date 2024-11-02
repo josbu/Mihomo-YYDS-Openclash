@@ -17,7 +17,6 @@
 
 # 公共 NTP 服务
   - DOMAIN-SUFFIX,ntp.org
-  - DST-PORT,123
 
 # 游戏下载
   - DOMAIN,gst.prod.dl.playstation.net
