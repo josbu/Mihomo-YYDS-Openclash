@@ -96,6 +96,7 @@ rule-providers:
 rules: 
   # 常用必备
   - DST-PORT,123,DIRECT
+  - IP-CIDR,95.161.76.100/31,REJECT-DROP,no-resolve
   - RULE-SET,fix-direct,直连
   - RULE-SET,XPTV,直连
   - RULE-SET,private_ip,直连,no-resolve
