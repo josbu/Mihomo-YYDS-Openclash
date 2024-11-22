@@ -8,7 +8,7 @@
 # ||      ╚═════╝  ╚═════╝  ╚═════╝      ||
 # ||                                     ||
 # >>=====================================<<
-# 名称: Stash666 V1.0
+# 名称: Stash666 V1.1
 # 日期: 2024年11月22日
 # 地址: https://github.com/666OS
 # 频道: https://t.me/Pinched666
@@ -144,20 +144,20 @@ proxy-groups:
 
 rule-providers:
   XPTV:
-    behavior: domain
+    behavior: classical
     format: yaml
     interval: 86400
     url: https://ghp.ci/https://github.com/666OS/YYDS/raw/main/mihomo/rules/XPTV.yaml
-  fix-direct:
-    behavior: classical
-    format: text
-    interval: 86400
-    url: https://ghp.ci/https://github.com/666OS/YYDS/raw/main/mihomo/rules/fix-direct.list
   speedtest:
     behavior: classical
     format: text
     interval: 86400
     url: https://ghp.ci/https://github.com/666OS/YYDS/raw/main/mihomo/rules/speedtest.list
+  fix-direct:
+    behavior: domain
+    format: text
+    interval: 86400
+    url: https://ghp.ci/https://github.com/666OS/YYDS/raw/main/mihomo/rules/fix-direct.list
   category-ai-chat-!cn:
     behavior: domain
     format: text
@@ -174,12 +174,12 @@ rule-providers:
     interval: 86400
     url: https://ghp.ci/https://github.com/666OS/YYDS/raw/main/mihomo/rules/cn.list
   private_ip:
-    behavior: domain
+    behavior: ipcidr
     format: text
     interval: 86400
     url: https://ghp.ci/https://github.com/666OS/YYDS/raw/main/mihomo/rules/private_ip.list
   cn_ip:
-    behavior: domain
+    behavior: ipcidr
     format: text
     interval: 86400
     url: https://ghp.ci/https://github.com/666OS/YYDS/raw/main/mihomo/rules/cn_ip.list
